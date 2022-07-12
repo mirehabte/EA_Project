@@ -30,7 +30,7 @@ public class BookDTO {
         this.title = title;
     }
 
-    public List<AuthorDTO> getAuthors() {
+    public List<AuthorDTO> getAuthorsDTOList() {
         return authorsDTOList;
     }
 
@@ -38,7 +38,7 @@ public class BookDTO {
         authorsDTOList.add(author);
     }
 
-    public List<BookCopiesDTO> getBookCopies() {
+    public List<BookCopiesDTO> getBookCopiesDTOList() {
         return bookCopiesDTOList;
     }
 

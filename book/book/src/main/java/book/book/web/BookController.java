@@ -2,13 +2,13 @@ package book.book.web;
 
 import book.book.service.BookDTO;
 import book.book.service.BookService;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @RestController
 public class BookController {
@@ -60,5 +60,22 @@ public class BookController {
         }
        bookService.updateBook(bookDTO);
        return new ResponseEntity<BookDTO>(bookDTO, HttpStatus.OK);
+    }
+
+    //Searching by isbn, author, tittle, scancode
+    @GetMapping("/books/search")
+    public Collection<BookDTO> searchingBook(
+            @RequestParam("isbn") String isbn,
+            @RequestParam("title") String title,
+            @RequestParam("authorName") String authorName,
+            @RequestParam("scanCode") String scanCode,
+            @RequestParam("operation") String operation
+    ){
+        Collection<BookDTO> bookDTOS = bookService.getAllBooks();
+        if(operation.equals("isbn")) bookDTOS.stream().filter(b -> b.getIsbn().equals(isbn)).collect(Collectors.toList());
+        if(operation.equals("title")) bookDTOS.stream().filter(b -> b.getTitle().equals(title)).collect(Collectors.toList());
+        if(operation.equals("author")) bookDTOS.stream().flatMap(b -> b.getAuthorsDTOList().stream()).filter(b -> b.getName().equals(authorName));
+        if(operation.equals("bookCopies")) bookDTOS.stream().flatMap(b -> b.getBookCopiesDTOList().stream()).filter(b -> b.getScanCode().equals(scanCode));
+        return bookDTOS;
     }
 }
