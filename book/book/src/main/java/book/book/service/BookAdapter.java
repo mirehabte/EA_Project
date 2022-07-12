@@ -5,6 +5,7 @@ import book.book.domain.Book;
 import book.book.domain.BookCopies;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class BookAdapter {
@@ -31,7 +32,7 @@ public class BookAdapter {
         return bookDTO;
     }
 
-    public static List<BookDTO> getBookDTOListFromBookList(List<Book> bookList){
+    public static Collection<BookDTO> getBookDTOListFromBookList(List<Book> bookList){
         List<BookDTO> bookDTOS = new ArrayList<>();
         for(Book book : bookList){
             bookDTOS.add(getBookDTOFromBook(book));

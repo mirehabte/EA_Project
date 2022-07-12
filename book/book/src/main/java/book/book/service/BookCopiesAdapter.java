@@ -3,6 +3,7 @@ package book.book.service;
 import book.book.domain.BookCopies;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class BookCopiesAdapter {
@@ -12,7 +13,7 @@ public class BookCopiesAdapter {
     public static BookCopiesDTO getBookCopiesDTOFromBookCopies(BookCopies bookCopies){
         return new BookCopiesDTO(bookCopies.getScanCode());
     }
-    public List<BookCopiesDTO> getBookCopiesDTOListFromBookCopiesList(List<BookCopies> bookCopiesList){
+    public Collection<BookCopiesDTO> getBookCopiesDTOListFromBookCopiesList(List<BookCopies> bookCopiesList){
         List<BookCopiesDTO> bookCopiesDTOS = new ArrayList<>();
         for(BookCopies bookCopies : bookCopiesList){
             bookCopiesDTOS.add(getBookCopiesDTOFromBookCopies(bookCopies));
