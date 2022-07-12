@@ -2,6 +2,7 @@ package book.book.web;
 
 import book.book.service.BookDTO;
 import book.book.service.BookService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,18 +47,18 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<?> getAllBooks(){
         Collection<BookDTO> bookDTOList = bookService.getAllBooks();
-        return new ResponseEntity<BookDTO>((BookDTO) bookDTOList, HttpStatus.OK);
+        return new ResponseEntity<Collection<BookDTO>>(bookDTOList, HttpStatus.OK);
     }
 
-    @PutMapping("/books")
-    public ResponseEntity<?> updateBook(@RequestBody BookDTO bookDTO){
-        BookDTO bookUpdate = bookService.getBook(bookDTO.getIsbn());
+    @PutMapping("/books/{isbn}")
+    public ResponseEntity<?> updateBook(@PathVariable("isbn") String isbn, @RequestBody BookDTO bookDTO){
+        BookDTO bookUpdate = bookService.getBook(isbn);
         if(bookUpdate == null){
             return new ResponseEntity<CustomErrorType>(
-                    new CustomErrorType("Book with : "+bookDTO.getIsbn()+" not found !"),
+                    new CustomErrorType("Book with : "+isbn+" not found !"),
                     HttpStatus.NOT_FOUND);
         }
        bookService.updateBook(bookDTO);
-        return new ResponseEntity<BookDTO>(bookDTO, HttpStatus.OK);
+       return new ResponseEntity<BookDTO>(bookDTO, HttpStatus.OK);
     }
 }

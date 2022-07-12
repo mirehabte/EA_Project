@@ -44,10 +44,11 @@ public class BookService {
     //Update a Book
     public void updateBook(BookDTO bookDTO){
         Book book = BookAdapter.getBookFromBookDTO(bookDTO);
-        book = bookRepository.findById(book.getIsbn()).get();
-        if(book == null){
-            System.out.println("No book found with the : "+book.getIsbn());
-        }
+        //book = bookRepository.findById(book.getIsbn()).get();
+//        if(book == null){
+//            System.out.println("No book found with the : "+book.getIsbn());
+//        }
         bookRepository.save(book);
+        //return BookAdapter.getBookDTOFromBook(book);
     }
 }
