@@ -1,5 +1,7 @@
 package book.book.service;
 
+import book.book.DTO.BookAdapter;
+import book.book.DTO.BookDTO;
 import book.book.domain.Book;
 import book.book.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;

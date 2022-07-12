@@ -1,6 +1,6 @@
 package book.book.web;
 
-import book.book.service.BookDTO;
+import book.book.DTO.BookDTO;
 import book.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,20 +62,26 @@ public class BookController {
        return new ResponseEntity<BookDTO>(bookDTO, HttpStatus.OK);
     }
 
-    //Searching by isbn, author, tittle, scancode
+    //Searching by isbn, authorName, tittle, scancode
     @GetMapping("/books/search")
     public Collection<BookDTO> searchingBook(
-            @RequestParam("isbn") String isbn,
-            @RequestParam("title") String title,
-            @RequestParam("authorName") String authorName,
-            @RequestParam("scanCode") String scanCode,
-            @RequestParam("operation") String operation
+            @RequestParam(value = "isbn") String isbn,
+           // @RequestParam(value = "title") String title,
+//            @RequestParam(value = "authorName") String authorName,
+//            @RequestParam(value = "scanCode") String scanCode,
+            @RequestParam(value = "operation") String operation
     ){
         Collection<BookDTO> bookDTOS = bookService.getAllBooks();
-        if(operation.equals("isbn")) bookDTOS.stream().filter(b -> b.getIsbn().equals(isbn)).collect(Collectors.toList());
-        if(operation.equals("title")) bookDTOS.stream().filter(b -> b.getTitle().equals(title)).collect(Collectors.toList());
-        if(operation.equals("author")) bookDTOS.stream().flatMap(b -> b.getAuthorsDTOList().stream()).filter(b -> b.getName().equals(authorName));
-        if(operation.equals("bookCopies")) bookDTOS.stream().flatMap(b -> b.getBookCopiesDTOList().stream()).filter(b -> b.getScanCode().equals(scanCode));
+        if(operation.equals("isbn")) {
+            return bookDTOS.stream().filter(b -> b.getIsbn().equals(isbn)).collect(Collectors.toList());
+        }
+//        if(operation.equals("title")) {
+//            return bookDTOS.stream().filter(b -> b.getTitle().equals(title)).collect(Collectors.toList());
+//        }
+//        if(operation.equals("author")){
+//            return bookDTOS.stream().flatMap(b -> b.getAuthorsDTOList().stream()).filter(b -> b.equals(authorName));
+//        }
+//        if(operation.equals("bookCopies")) bookDTOS.stream().flatMap(b -> b.getBookCopiesDTOList().stream()).filter(b -> b.getScanCode().equals(scanCode));
         return bookDTOS;
     }
 }

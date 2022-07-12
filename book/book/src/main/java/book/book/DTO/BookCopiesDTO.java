@@ -1,4 +1,4 @@
-package book.book.service;
+package book.book.DTO;
 
 public class BookCopiesDTO {
     private String scanCode;

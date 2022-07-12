@@ -1,4 +1,4 @@
-package book.book.service;
+package book.book.DTO;
 
 import book.book.domain.BookCopies;
 

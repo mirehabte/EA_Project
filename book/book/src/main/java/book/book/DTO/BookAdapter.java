@@ -1,4 +1,4 @@
-package book.book.service;
+package book.book.DTO;
 
 import book.book.domain.Author;
 import book.book.domain.Book;
@@ -12,10 +12,10 @@ public class BookAdapter {
 
     public static Book getBookFromBookDTO(BookDTO bookDTO){
         Book book = new Book(bookDTO.getIsbn(), bookDTO.getTitle());
-        for(BookCopiesDTO bookCopiesDTO : bookDTO.getBookCopies()){
+        for(BookCopiesDTO bookCopiesDTO : bookDTO.getBookCopiesDTOList()){
             book.setBookCopies(BookCopiesAdapter.getBookCopiesFromBookCopiesDTO(bookCopiesDTO));
         }
-        for(AuthorDTO authorDTO : bookDTO.getAuthors()){
+        for(AuthorDTO authorDTO : bookDTO.getAuthorsDTOList()){
             book.setAuthor(AuthorAdapter.getAuthorFromAuthorDTO(authorDTO));
         }
         return book;
