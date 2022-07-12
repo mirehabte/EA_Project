@@ -14,6 +14,8 @@ public class Book {
     private List<Author> authors = new ArrayList<>();
     private List<BookCopies> bookCopies = new ArrayList<>();
 
+    public Book(){}
+
     public Book(String isbn, String title) {
         this.isbn = isbn;
         this.title = title;

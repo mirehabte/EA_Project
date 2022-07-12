@@ -9,6 +9,8 @@ public class Author {
     private long authorNumber;
     private String name;
 
+    public Author(){}
+
     public Author(long authorNumber, String name) {
         this.authorNumber = authorNumber;
         this.name = name;

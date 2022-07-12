@@ -8,6 +8,8 @@ public class BookCopies {
     @Id
     private String scanCode;
 
+    public BookCopies(){}
+
     public BookCopies(String scanCode) {
         this.scanCode = scanCode;
     }
