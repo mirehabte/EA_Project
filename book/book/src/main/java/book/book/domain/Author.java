@@ -18,10 +18,6 @@ public class Author {
         return authorNumber;
     }
 
-    public void setAuthorNumber(long authorNumber) {
-        this.authorNumber = authorNumber;
-    }
-
     public String getName() {
         return name;
     }

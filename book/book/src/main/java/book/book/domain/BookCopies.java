@@ -16,10 +16,6 @@ public class BookCopies {
         return scanCode;
     }
 
-    public void setScanCode(String scanCode) {
-        this.scanCode = scanCode;
-    }
-
     @Override
     public String toString() {
         return "BookCopies{" +
