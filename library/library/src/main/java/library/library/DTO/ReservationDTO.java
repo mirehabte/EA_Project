@@ -1,23 +1,17 @@
-package library.library.domain;
+package library.library.DTO;
 
-import library.library.client.Book;
-import library.library.client.BookCopies;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class Reservation {
-    @Id
-    @GeneratedValue
+public class ReservationDTO {
     private long id;
     private LocalDate reservationDate;
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private List<Book> books = new ArrayList<>();
 
-    public Reservation(LocalDate reservationDate) {
+    private List<BookDTO> books = new ArrayList<>();
+
+    public ReservationDTO(LocalDate reservationDate) {
         this.reservationDate = reservationDate;
     }
 
@@ -33,11 +27,11 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public List<Book> getBooks() {
+    public List<BookDTO> getBooksDTO() {
         return books;
     }
 
-    public void setBooks(Book book) {
+    public void setBooksDTO(BookDTO book) {
         books.add(book);
     }
 

@@ -1,17 +1,10 @@
-package library.library.domain;
+package library.library.DTO;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class Payment {
-    @Id
-    @GeneratedValue
+public class PaymentDTO {
     private long id;
     private double amount;
 
-    public Payment(double amount) {
+    public PaymentDTO(double amount) {
         this.amount = amount;
     }
 
@@ -29,8 +22,8 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment{" +
-                "paymentNumber=" + id +
+        return "PaymentDTO{" +
+                "id=" + id +
                 ", amount=" + amount +
                 '}';
     }

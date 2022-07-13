@@ -1,11 +1,10 @@
-package book.book.domain;
+package library.library.client;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+
+
 public class BookCopies {
-    @Id
+
     private String scanCode;
     private boolean isBorrowed;
 
