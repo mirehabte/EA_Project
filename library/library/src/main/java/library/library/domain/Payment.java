@@ -11,6 +11,8 @@ public class Payment {
     private long id;
     private double amount;
 
+    public Payment(){}
+
     public Payment(double amount) {
         this.amount = amount;
     }

@@ -12,6 +12,8 @@ public class CustomerDTO {
 
     private ReservationDTO reservation;
 
+    public CustomerDTO(){}
+
     public CustomerDTO(long customerNumber, String name, String email) {
         this.customerNumber = customerNumber;
         this.name = name;

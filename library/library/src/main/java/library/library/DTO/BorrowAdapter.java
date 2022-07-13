@@ -9,7 +9,7 @@ import java.util.List;
 public class BorrowAdapter {
     public static Borrow getBorrowFromBorrowDTO(BorrowDTO borrowDTO){
         Borrow borrow = new Borrow(borrowDTO.getBorrowNumber());
-        borrow.setCustomer(CustomerAdapter.getCustomerFromCustomerDTO(borrowDTO.getCustomer()));
+        //borrow.setCustomer(CustomerAdapter.getCustomerFromCustomerDTO(borrowDTO.getCustomer()));
         //customer.setPayment(PaymentAdapter.getPaymentFromPaymentDTO(customerDTO.getPayment()));
         //customer.setReservation(ReservationAdapter.getReservationFromReservationDTO(customerDTO.getReservation()));
         return borrow;
@@ -17,7 +17,7 @@ public class BorrowAdapter {
 
     public static BorrowDTO getBorrowDTOFromBorrow(Borrow borrow){
         BorrowDTO borrowDTO = new BorrowDTO(borrow.getBorrowNumber());
-        borrowDTO.setCustomer(CustomerAdapter.getCustomerDTOFromCustomer(borrow.getCustomer()));
+        //borrowDTO.setCustomer(CustomerAdapter.getCustomerDTOFromCustomer(borrow.getCustomer()));
         //customerDTO.setPayment(PaymentAdapter.getPaymentDTOFromPayment(customer.getPayment()));
         //customerDTO.setReservation(ReservationAdapter.getReservationDTOFromReservation(customer.getReservation()));
         return borrowDTO;

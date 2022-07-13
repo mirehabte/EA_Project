@@ -11,6 +11,9 @@ public class ReservationDTO {
 
     private List<BookDTO> books = new ArrayList<>();
 
+    public ReservationDTO(){
+        reservationDate=LocalDate.now();
+    }
     public ReservationDTO(LocalDate reservationDate) {
         this.reservationDate = reservationDate;
     }

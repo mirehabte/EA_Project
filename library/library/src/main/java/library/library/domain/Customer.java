@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,8 @@ public class Customer {
     private Payment payment;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Reservation reservation;
+
+    public Customer(){}
 
     public Customer(long customerNumber, String name, String email) {
         this.customerNumber = customerNumber;
@@ -100,9 +103,10 @@ public class Customer {
         return outstandingFee;
     }
     public void reserveBook(List<Book> books){
+//        List<Book> books = new ArrayList<>();
+//        for(Book book : books) reservation.add(book);
         if(books.size()>0){
             reservation=new Reservation(LocalDate.now());
-            for(Book book : books) reservation.setBooks(book);
         } else {
             System.out.println("Please check your input ..");
         }

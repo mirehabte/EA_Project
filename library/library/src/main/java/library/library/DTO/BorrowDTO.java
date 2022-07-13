@@ -16,6 +16,8 @@ public class BorrowDTO {
 
     private List<BookCopiesDTO> bookCopies = new ArrayList<>();
 
+    public BorrowDTO(){}
+
     public BorrowDTO(long borrowNumber) {
         this.borrowNumber = borrowNumber;
     }
@@ -79,7 +81,7 @@ public class BorrowDTO {
                 ", checkoutDate=" + checkoutDate +
                 ", returnDate=" + returnDate +
                 ", penalityFee=" + penalityFee +
-                ", customer=" + customer +
+//                ", customer=" + customer +
                 ", reservations=" + reservations +
                 ", bookCopies=" + bookCopies +
                 '}';

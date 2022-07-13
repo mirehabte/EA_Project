@@ -4,6 +4,7 @@ public class PaymentDTO {
     private long id;
     private double amount;
 
+    public PaymentDTO(){}
     public PaymentDTO(double amount) {
         this.amount = amount;
     }

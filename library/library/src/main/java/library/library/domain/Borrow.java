@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -28,9 +26,9 @@ public class Borrow {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "reservation")
     private List<Reservation> reservations;
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_copies")
-    private List<BookCopies> bookCopies = new ArrayList<>();
+    //private List<BookCopies> bookCopies = new ArrayList<>();
+
+    public Borrow(){}
 
     public Borrow(long borrowNumber) {
         this.borrowNumber = borrowNumber;
@@ -73,6 +71,7 @@ public class Borrow {
     }
 
     public void checkout(List<Book> books){
+        List<BookCopies> bookCopies = new ArrayList<>();
         if(books.size()>0 && books.size()<=4) {
             if (books.stream().flatMap(b -> b.getBookCopies().stream()).filter(b -> !(b.isBorrowed())).count() > 0) {
                 for (Book book : books) {
