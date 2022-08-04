@@ -2,6 +2,8 @@ package library.library.domain;
 
 import library.library.client.Book;
 import library.library.client.BookCopies;
+import library.library.config.ApplicationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -18,15 +20,15 @@ public class Borrow {
     private long borrowNumber;
     private LocalDate checkoutDate;
     private LocalDate returnDate;
-
-    @Value("${penalityFee}")
-    private double penalityFee;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Customer customer;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "reservation")
     private List<Reservation> reservations;
     //private List<BookCopies> bookCopies = new ArrayList<>();
+
+//    @Autowired
+//    ApplicationProperties applicationProperties;
 
     public Borrow(){}
 
@@ -113,10 +115,12 @@ public class Borrow {
     }
 
     public double penality(LocalDate returnDate){
+
         long usedDays = DAYS.between(returnDate, checkoutDate);
         long differenceDays = usedDays - 21;
-        double totalPenality =  differenceDays*penalityFee;
+        double totalPenality =  differenceDays*0.5;
         return totalPenality;
+
     }
 
     @Override

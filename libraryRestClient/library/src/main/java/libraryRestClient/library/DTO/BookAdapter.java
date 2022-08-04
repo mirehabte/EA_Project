@@ -1,9 +1,10 @@
-package library.library.DTO;
+package libraryRestClient.library.DTO;
 
 
-import library.library.client.Author;
-import library.library.client.Book;
-import library.library.client.BookCopies;
+
+import libraryRestClient.library.client.Author;
+import libraryRestClient.library.client.Book;
+import libraryRestClient.library.client.BookCopies;
 
 import java.util.ArrayList;
 import java.util.Collection;

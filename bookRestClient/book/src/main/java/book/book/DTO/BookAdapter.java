@@ -1,9 +1,8 @@
-package library.library.DTO;
+package book.book.DTO;
 
-
-import library.library.client.Author;
-import library.library.client.Book;
-import library.library.client.BookCopies;
+import book.book.domain.Author;
+import book.book.domain.Book;
+import book.book.domain.BookCopies;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,13 +38,5 @@ public class BookAdapter {
             bookDTOS.add(getBookDTOFromBook(book));
         }
         return bookDTOS;
-    }
-
-    public static List<Book> getBookListFromBookDTOList(List<BookDTO> bookList){
-        List<Book> books = new ArrayList<>();
-        for(BookDTO bookDTO : bookList){
-            books.add(getBookFromBookDTO(bookDTO));
-        }
-        return books;
     }
 }
